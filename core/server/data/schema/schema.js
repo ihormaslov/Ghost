@@ -328,6 +328,7 @@ module.exports = {
         name: {type: 'string', maxlength: 191, nullable: true},
         note: {type: 'string', maxlength: 2000, nullable: true},
         subscribed: {type: 'bool', nullable: true, defaultTo: true},
+        paid_status: {type: 'bool', nullable: true, defaultTo: false},
         created_at: {type: 'dateTime', nullable: false},
         created_by: {type: 'string', maxlength: 24, nullable: false},
         updated_at: {type: 'dateTime', nullable: true},

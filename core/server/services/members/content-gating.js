@@ -22,10 +22,11 @@ function checkPostAccess(post, member) {
     if (post.visibility === 'members') {
         return PERMIT_ACCESS;
     }
-
+    
     const memberHasPlan = member.stripe && member.stripe.subscriptions && member.stripe.subscriptions.length;
+    const hasAccess = memberHasPlan || member.paid_status;
 
-    if (post.visibility === 'paid' && memberHasPlan) {
+    if (post.visibility === 'paid' && hasAccess) {
         return PERMIT_ACCESS;
     }
 
