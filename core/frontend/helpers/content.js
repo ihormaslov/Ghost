@@ -21,12 +21,6 @@ module.exports = function content(options = {}) {
         }
     }
 
-    if (hash.percent){
-        const wordsCount = parseInt(this.html.split(' ').length * hash.percent / 100);
-        runTruncate = true;
-        truncateOptions.words = wordsCount;
-    }
-
     if (this.html === null) {
         this.html = '';
     }
