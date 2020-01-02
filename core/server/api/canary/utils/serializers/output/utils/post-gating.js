@@ -6,6 +6,8 @@ const forPost = (attrs, frame) => {
     if (labs.isSet('members')) {
         const memberHasAccess = membersService.contentGating.checkPostAccess(attrs, frame.original.context.member);
 
+        attrs.memberHasAccess = memberHasAccess;
+
         if (!memberHasAccess) {
             ['plaintext', 'html'].forEach((field) => {
                 if (attrs[field] && frame.original.context.member){
