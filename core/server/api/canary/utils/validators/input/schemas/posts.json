@@ -13,6 +13,10 @@
                     "type": "string",
                     "maxLength": 2000
                 },
+                "audio": {
+                    "type": "string",
+                    "maxLength": 2000
+                },
                 "slug": {
                     "type": "string",
                     "maxLength": 191
