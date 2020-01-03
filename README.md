@@ -71,6 +71,9 @@ Check out our [official documentation](https://ghost.org/docs/) for more informa
 
 &nbsp;
 
+# Configuration
+
+[https://ghost.org/docs/concepts/config/](https://ghost.org/docs/concepts/config/)
 
 # Getting Help
 
