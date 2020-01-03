@@ -107,6 +107,7 @@ projectFilesBackup
 /content/adapters/storage/**/*
 /content/adapters/scheduling/**/*
 !/content/themes/casper
+!/content/themes/world-times
 !/README.md
 !/content/**/README.md
 
