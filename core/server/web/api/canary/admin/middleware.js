@@ -18,7 +18,7 @@ const notImplemented = function (req, res, next) {
         // @NOTE: experimental
         actions: ['GET'],
         tags: ['GET', 'PUT', 'DELETE', 'POST'],
-        users: ['GET'],
+        users: ['GET', 'POST'],
         themes: ['POST', 'PUT'],
         members: ['GET', 'PUT', 'DELETE', 'POST'],
         config: ['GET'],

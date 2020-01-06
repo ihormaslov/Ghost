@@ -1097,11 +1097,12 @@ ghostBookshelf.Model = ghostBookshelf.Model.extend({
             }
         }
 
+        // FIXME: some bug is in below lines. Duplicated slug.
         // If it's a user, let's try to cut it down (unless this is a human request)
-        if (baseName === 'user' && options && options.shortSlug && slugTryCount === 1 && slug !== 'ghost-owner') {
-            longSlug = slug;
-            slug = (slug.indexOf('-') > -1) ? slug.substr(0, slug.indexOf('-')) : slug;
-        }
+        // if (baseName === 'user' && options && options.shortSlug && slugTryCount === 1 && slug !== 'ghost-owner') {
+        //     longSlug = slug;
+        //     slug = (slug.indexOf('-') > -1) ? slug.substr(0, slug.indexOf('-')) : slug;
+        // }
 
         if (!_.has(options, 'importing') || !options.importing) {
             // This checks if the first character of a tag name is a #. If it is, this

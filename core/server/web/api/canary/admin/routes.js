@@ -70,6 +70,8 @@ module.exports = function apiRoutes() {
     // NOTE: We don't expose any email addresses via the public api.
     router.get('/users/email/:email', mw.authAdminApi, http(apiCanary.users.read));
 
+    router.post('/users', mw.authAdminApi, http(apiCanary.users.add));
+
     router.put('/users/password', mw.authAdminApi, http(apiCanary.users.changePassword));
     router.put('/users/owner', mw.authAdminApi, http(apiCanary.users.transferOwnership));
     router.put('/users/:id', mw.authAdminApi, http(apiCanary.users.edit));

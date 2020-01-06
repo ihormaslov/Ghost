@@ -120,7 +120,7 @@ module.exports = {
 
         // NOTE: this block should be removed completely once JSON Schema validations
         //       are introduced for all of the endpoints
-        if (!['posts', 'tags'].includes(apiConfig.docName)) {
+        if (!['posts', 'tags', 'users'].includes(apiConfig.docName)) {
             if (_.isEmpty(frame.data) || _.isEmpty(frame.data[apiConfig.docName]) || _.isEmpty(frame.data[apiConfig.docName][0])) {
                 return Promise.reject(new common.errors.BadRequestError({
                     message: common.i18n.t('errors.api.utils.noRootKeyProvided', {docName: apiConfig.docName})
