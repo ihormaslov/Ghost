@@ -58,12 +58,13 @@ Post = ghostBookshelf.Model.extend({
         };
     },
 
-    relationships: ['tags', 'authors', 'mobiledoc_revisions', 'posts_meta'],
+    relationships: ['tags', 'authors', 'experts', 'mobiledoc_revisions', 'posts_meta'],
 
     // NOTE: look up object, not super nice, but was easy to implement
     relationshipBelongsTo: {
         tags: 'tags',
         authors: 'users',
+        experts: 'users',
         posts_meta: 'posts_meta'
     },
 
@@ -242,6 +243,18 @@ Post = ghostBookshelf.Model.extend({
                 authors.forEach(author => author.emitChange('attached', options));
             });
         });
+        
+        model.related('experts').once('detaching', function onDetached(collection, expert) {
+            model.related('experts').once('detached', function onDetached(detachedCollection, response, options) {
+                expert.emitChange('detached', options);
+            });
+        });
+
+        model.related('experts').once('attaching', function onDetached(collection, expert) {
+            model.related('experts').once('attached', function onDetached(detachedCollection, response, options) {
+                expert.forEach(expert => expert.emitChange('attached', options));
+            });
+        });
     },
 
     /**
@@ -256,6 +269,10 @@ Post = ghostBookshelf.Model.extend({
         });
 
         model.related('authors').forEach((author) => {
+            author.emitChange('attached', options);
+        });
+
+        model.related('experts').forEach((author) => {
             author.emitChange('attached', options);
         });
     },
@@ -576,6 +593,12 @@ Post = ghostBookshelf.Model.extend({
             .query('orderBy', 'sort_order', 'ASC');
     },
 
+    experts: function experts() {
+        return this.belongsToMany('User', 'posts_experts', 'post_id', 'expert_id')
+            .withPivot('sort_order')
+            .query('orderBy', 'sort_order', 'ASC');
+    },
+
     tags: function tags() {
         return this.belongsToMany('Tag', 'posts_tags', 'post_id', 'tag_id')
             .withPivot('sort_order')
@@ -760,6 +783,11 @@ Post = ghostBookshelf.Model.extend({
             order = `(SELECT count(*) FROM posts_authors WHERE post_id = posts.id) DESC, ${order}`;
         }
 
+        // CASE: if the filter contains an `IN` operator, we should return the posts first, which match both experts
+        if (options.filter && options.filter.match(/(experts|expert):\s?\[.*\]/)) {
+            order = `(SELECT count(*) FROM posts_experts WHERE post_id = posts.id) DESC, ${order}`;
+        }
+
         return order;
     },
 
@@ -801,9 +829,9 @@ Post = ghostBookshelf.Model.extend({
      */
     defaultRelations: function defaultRelations(methodName, options) {
         if (['edit', 'add', 'destroy'].indexOf(methodName) !== -1) {
-            options.withRelated = _.union(['authors', 'tags'], options.withRelated || []);
+            options.withRelated = _.union(['authors', 'tags', 'experts'], options.withRelated || []);
         }
-        options.withRelated = _.union(['posts_meta'], options.withRelated || []);
+        options.withRelated = _.union(['posts_meta', 'experts'], options.withRelated || []);
 
         return options;
     },
@@ -998,6 +1026,9 @@ Posts = ghostBookshelf.Collection.extend({
 
 // Extension for handling the logic for author + multiple authors
 Post = relations.authors.extendModel(Post, Posts, ghostBookshelf);
+
+// // Extension for handling the logic for experts + multiple experts
+// Post = relations.experts.extendModel(Post, Posts, ghostBookshelf);
 
 module.exports = {
     Post: ghostBookshelf.model('Post', Post),

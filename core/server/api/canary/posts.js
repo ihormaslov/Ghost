@@ -3,8 +3,8 @@ const common = require('../../lib/common');
 const urlUtils = require('../../lib/url-utils');
 const {mega} = require('../../services/mega');
 const membersService = require('../../services/members');
-const allowedIncludes = ['tags', 'authors', 'authors.roles', 'email'];
-const unsafeAttrs = ['status', 'authors', 'visibility'];
+const allowedIncludes = ['tags', 'authors', 'authors.roles', 'experts', 'email'];
+const unsafeAttrs = ['status', 'authors', 'experts', 'visibility'];
 const _ = require('lodash');
 const config = require('../../config');
 

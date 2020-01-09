@@ -119,6 +119,9 @@
                 "authors": {
                     "$ref": "#/definitions/post-authors"
                 },
+                "experts": {
+                    "$ref": "#/definitions/post-experts"
+                },
                 "tags": {
                     "$ref": "#/definitions/post-tags"
                 },
@@ -177,6 +180,43 @@
         },
         "post-authors": {
             "description": "Authors of the post",
+            "type": "array",
+            "items": {
+                "anyOf": [{
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "maxLength": 24
+                        },
+                        "slug": {
+                            "type": "string",
+                            "maxLength": 191
+                        },
+                        "email": {
+                            "type": "string",
+                            "maxLength": 191
+                        },
+                        "roles": {
+                            "strip": true
+                        },
+                        "permissions": {
+                            "strip": true
+                        }
+                    },
+                    "anyOf": [
+                        {"required": ["id"]},
+                        {"required": ["slug"]},
+                        {"required": ["email"]}
+                    ]
+                }, {
+                    "type": "string",
+                    "maxLength": 191
+                }]
+            }
+        },
+        "post-experts": {
+            "description": "Experts of the post",
             "type": "array",
             "items": {
                 "anyOf": [{

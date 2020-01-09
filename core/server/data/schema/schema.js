@@ -104,6 +104,12 @@ module.exports = {
         author_id: {type: 'string', maxlength: 24, nullable: false, references: 'users.id'},
         sort_order: {type: 'integer', nullable: false, unsigned: true, defaultTo: 0}
     },
+    posts_experts: {
+        id: {type: 'string', maxlength: 24, nullable: false, primary: true},
+        post_id: {type: 'string', maxlength: 24, nullable: false, references: 'posts.id'},
+        expert_id: {type: 'string', maxlength: 24, nullable: false, references: 'users.id'},
+        sort_order: {type: 'integer', nullable: false, unsigned: true, defaultTo: 0}
+    },
     roles: {
         id: {type: 'string', maxlength: 24, nullable: false, primary: true},
         name: {type: 'string', maxlength: 50, nullable: false, unique: true},
