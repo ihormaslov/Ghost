@@ -8,7 +8,7 @@ const format = (date) => {
 };
 
 const forPost = (attrs) => {
-    ['created_at', 'updated_at', 'published_at'].forEach((field) => {
+    ['created_at', 'updated_at', 'published_at, call_date'].forEach((field) => {
         if (attrs[field]) {
             attrs[field] = format(attrs[field]);
         }

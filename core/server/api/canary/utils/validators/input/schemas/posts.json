@@ -116,6 +116,10 @@
                     "format": "uri-reference",
                     "maxLength": 2000
                 },
+                "call_date": {
+                    "type": ["string", "null"],
+                    "format": "date"
+                },
                 "authors": {
                     "$ref": "#/definitions/post-authors"
                 },
