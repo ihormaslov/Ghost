@@ -118,7 +118,7 @@
                 },
                 "call_date": {
                     "type": ["string", "null"],
-                    "format": "date"
+                    "format": "date-time"
                 },
                 "authors": {
                     "$ref": "#/definitions/post-authors"
