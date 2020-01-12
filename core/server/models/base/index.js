@@ -1203,6 +1203,18 @@ ghostBookshelf.Model = ghostBookshelf.Model.extend({
                     whereIn: 'posts_authors.post_id',
                     whereInKey: 'post_id',
                     orderBy: 'sort_order'
+                },
+                experts: {
+                    targetTable: 'users',
+                    name: 'experts',
+                    innerJoin: {
+                        relation: 'posts_experts',
+                        condition: ['posts_experts.expert_id', '=', 'users.id']
+                    },
+                    select: ['posts_experts.post_id as post_id'],
+                    whereIn: 'posts_experts.post_id',
+                    whereInKey: 'post_id',
+                    orderBy: 'sort_order'
                 }
             };
 
@@ -1268,6 +1280,7 @@ ghostBookshelf.Model = ghostBookshelf.Model.extend({
                 }
 
                 _.each(withRelated, (withRelatedKey) => {
+                    console.log(withRelated, withRelatedKey, '===================================================');
                     const relation = relations[withRelatedKey];
 
                     props[relation.name] = (() => {

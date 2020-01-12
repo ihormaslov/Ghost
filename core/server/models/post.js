@@ -830,6 +830,9 @@ Post = ghostBookshelf.Model.extend({
     defaultRelations: function defaultRelations(methodName, options) {
         if (['edit', 'add', 'destroy'].indexOf(methodName) !== -1) {
             options.withRelated = _.union(['authors', 'tags', 'experts'], options.withRelated || []);
+        } else {
+            // I have no idea how to add experts to withRelated, so this is how this piece of shit appeared
+            options.withRelated = _.union(['experts'], options.withRelated || []);
         }
 
         const META_ATTRIBUTES = _.without(ghostBookshelf.model('PostsMeta').prototype.permittedAttributes(), 'id', 'post_id');

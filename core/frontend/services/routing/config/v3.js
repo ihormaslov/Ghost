@@ -17,6 +17,14 @@ module.exports.QUERY = {
             slug: '%s'
         }
     },
+    experts: {
+        controller: 'expertsPublic',
+        type: 'read',
+        resource: 'experts',
+        options: {
+            slug: '%s'
+        }
+    },
     post: {
         controller: 'postsPublic',
         type: 'read',

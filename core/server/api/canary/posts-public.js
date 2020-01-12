@@ -1,6 +1,6 @@
 const models = require('../../models');
 const common = require('../../lib/common');
-const allowedIncludes = ['tags', 'authors'];
+const allowedIncludes = ['tags', 'authors', 'experts'];
 
 module.exports = {
     docName: 'posts',

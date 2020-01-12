@@ -37,14 +37,14 @@ function defaultRelations(frame) {
         return false;
     }
 
-    frame.options.withRelated = ['tags', 'authors', 'authors.roles', 'email'];
+    frame.options.withRelated = ['tags', 'authors', 'authors.roles', 'experts', 'email'];
 }
 
 function setDefaultOrder(frame) {
     let includesOrderedRelations = false;
 
     if (frame.options.withRelated) {
-        const orderedRelations = ['author', 'authors', 'tag', 'tags'];
+        const orderedRelations = ['author', 'authors', 'tag', 'tags', 'expert', 'experts'];
         includesOrderedRelations = _.intersection(orderedRelations, frame.options.withRelated).length > 0;
     }
 

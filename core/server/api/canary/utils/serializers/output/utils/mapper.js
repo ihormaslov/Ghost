@@ -62,6 +62,10 @@ const mapPost = (model, frame) => {
                 jsonModel.authors = jsonModel.authors.map(author => mapUser(author, frame));
             }
 
+            if (relation === 'experts' && jsonModel.experts) {
+                jsonModel.experts = jsonModel.experts.map(expert => mapUser(expert, frame));
+            }
+
             if (relation === 'email' && _.isEmpty(jsonModel.email)) {
                 jsonModel.email = null;
             }

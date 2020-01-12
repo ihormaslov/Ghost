@@ -32,14 +32,16 @@ module.exports = [
                 'custom_template',
                 'locale'
             ],
-            withRelated: ['tags', 'authors'],
+            withRelated: ['tags', 'authors', 'experts'],
             withRelatedPrimary: {
                 primary_tag: 'tags',
-                primary_author: 'authors'
+                primary_author: 'authors',
+                primary_expert: 'experts'
             },
             withRelatedFields: {
                 tags: ['tags.id', 'tags.slug'],
-                authors: ['users.id', 'users.slug']
+                authors: ['users.id', 'users.slug'],
+                experts: ['users.id', 'users.slug']
             }
         },
         events: {

@@ -23,7 +23,7 @@ describe('Unit: canary/utils/serializers/output/posts', function () {
         const apiConfig = {};
         const frame = {
             options: {
-                withRelated: ['tags', 'authors'],
+                withRelated: ['tags', 'authors', 'experts'],
                 context: {
                     private: false
                 }
