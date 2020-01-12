@@ -181,6 +181,16 @@ module.exports = {
             });
         }
 
+        if (frame.data.posts[0].experts) {
+            frame.data.posts[0].experts.forEach((expert, index) => {
+                if (_.isString(expert)) {
+                    frame.data.posts[0].experts[index] = {
+                        email: expert
+                    };
+                }
+            });
+        }
+
         if (frame.data.posts[0].tags) {
             frame.data.posts[0].tags.forEach((tag, index) => {
                 if (_.isString(tag)) {

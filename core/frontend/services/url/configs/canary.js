@@ -139,5 +139,33 @@ module.exports = [
             update: ['user.activated.edited', 'user.attached', 'user.detached'],
             remove: 'user.deleted'
         }
+    },
+    {
+        type: 'experts',
+        modelOptions: {
+            modelName: 'User',
+            exclude: [
+                'bio',
+                'website',
+                'location',
+                'facebook',
+                'twitter',
+                'locale',
+                'accessibility',
+                'meta_title',
+                'meta_description',
+                'tour'
+            ],
+            filter: 'visibility:public',
+            shouldHavePosts: {
+                joinTo: 'expert_id',
+                joinTable: 'posts_experts'
+            }
+        },
+        events: {
+            add: 'user.activated',
+            update: ['user.activated.edited', 'user.attached', 'user.detached'],
+            remove: 'user.deleted'
+        }
     }
 ];

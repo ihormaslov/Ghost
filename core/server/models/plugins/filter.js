@@ -16,6 +16,14 @@ const RELATIONS = {
         joinTable: 'posts_authors',
         joinFrom: 'post_id',
         joinTo: 'author_id'
+    },
+    experts: {
+        tableName: 'users',
+        tableNameAs: 'experts',
+        type: 'manyToMany',
+        joinTable: 'posts_experts',
+        joinFrom: 'post_id',
+        joinTo: 'expert_id'
     }
 };
 
@@ -33,6 +41,12 @@ const EXPANSIONS = [{
 }, {
     key: 'author',
     replacement: 'authors.slug'
+}, {
+    key: 'experts',
+    replacement: 'experts.slug'
+}, {
+    key: 'expert',
+    replacement: 'expert.slug'
 }, {
     key: 'tag',
     replacement: 'tags.slug'

@@ -133,6 +133,12 @@ module.exports.extendModel = function extendModel(Post, Posts, ghostBookshelf) {
                 });
             }
 
+            if (model.get('experts')) {
+                ops.push(() => {
+                    return this.matchExperts(model, options);
+                });
+            }
+
             ops.push(() => {
                 // CASE: `post.author_id` has changed
                 if (model.hasChanged('author_id')) {
@@ -280,6 +286,57 @@ module.exports.extendModel = function extendModel(Post, Posts, ghostBookshelf) {
                         });
                 }).then(() => {
                     model.set('authors', authorsToSet);
+                });
+            });
+
+            return sequence(ops);
+        },
+
+        matchExperts(model, options) {
+            let ownerUser;
+            const ops = [];
+
+            ops.push(() => {
+                return ghostBookshelf
+                    .model('User')
+                    .getOwnerUser(Object.assign({}, _.pick(options, 'transacting')))
+                    .then((_ownerUser) => {
+                        ownerUser = _ownerUser;
+                    });
+            });
+
+            ops.push(() => {
+                const experts = model.get('experts');
+                const expertsToSet = [];
+
+                return Promise.each(experts, (expert, index) => {
+                    const query = {};
+
+                    if (expert.id) {
+                        query.id = expert.id;
+                    } else if (expert.slug) {
+                        query.slug = expert.slug;
+                    } else if (expert.email) {
+                        query.email = expert.email;
+                    }
+
+                    return ghostBookshelf
+                        .model('User')
+                        .where(query)
+                        .fetch(Object.assign({columns: ['id']}, _.pick(options, 'transacting')))
+                        .then((user) => {
+                            let userId = user ? user.id : ownerUser.id;
+
+                            // CASE: avoid attaching duplicate authors relation
+                            const userExists = _.find(expertsToSet, {id: userId.id});
+
+                            if (!userExists) {
+                                expertsToSet[index] = {};
+                                expertsToSet[index].id = userId;
+                            }
+                        });
+                }).then(() => {
+                    model.set('experts', expertsToSet);
                 });
             });
 

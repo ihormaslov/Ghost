@@ -54,6 +54,7 @@ class PostsImporter extends BaseImporter {
     addNestedRelations() {
         this.requiredFromFile.posts_tags = _.orderBy(this.requiredFromFile.posts_tags, ['post_id', 'sort_order'], ['asc', 'asc']);
         this.requiredFromFile.posts_authors = _.orderBy(this.requiredFromFile.posts_authors, ['post_id', 'sort_order'], ['asc', 'asc']);
+        this.requiredFromFile.posts_experts = _.orderBy(this.requiredFromFile.posts_experts, ['post_id', 'sort_order'], ['asc', 'asc']);
 
         /**
          * from {post_id: 1, tag_id: 2} to post.tags=[{id:id}]
@@ -87,6 +88,7 @@ class PostsImporter extends BaseImporter {
 
         run(this.requiredFromFile.posts_tags, 'tags', 'tag_id');
         run(this.requiredFromFile.posts_authors, 'authors', 'author_id');
+        run(this.requiredFromFile.posts_experts, 'exports', 'export_id');
     }
 
     /**
