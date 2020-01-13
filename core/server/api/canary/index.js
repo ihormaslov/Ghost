@@ -149,5 +149,9 @@ module.exports = {
 
     get authorsPublic() {
         return shared.pipeline(require('./authors-public'), localUtils, 'content');
+    },
+
+    get expertsPublic() {
+        return shared.pipeline(require('./experts-public'), localUtils, 'content');
     }
 };

@@ -4,7 +4,7 @@ const models = require('../../models');
 const ALLOWED_INCLUDES = ['count.posts'];
 
 module.exports = {
-    docName: 'exports',
+    docName: 'experts',
 
     browse: {
         options: [

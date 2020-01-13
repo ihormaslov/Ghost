@@ -19,7 +19,7 @@ const queryDefaults = {
  */
 const defaultQueryOptions = {
     options: {
-        include: 'authors,tags'
+        include: 'authors,tags,experts'
     }
 };
 
@@ -27,7 +27,8 @@ const defaultDataQueryOptions = {
     post: _.cloneDeep(defaultQueryOptions),
     page: _.cloneDeep(defaultQueryOptions),
     tag: null,
-    author: null
+    author: null,
+    expert: null
 };
 
 const defaultPostQuery = _.cloneDeep(queryDefaults);

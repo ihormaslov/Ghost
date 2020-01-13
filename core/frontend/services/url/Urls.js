@@ -62,7 +62,6 @@ class Urls {
      * @returns {Object}
      */
     getByResourceId(id) {
-        console.log(this.urls, id);
         return this.urls[id];
     }
 

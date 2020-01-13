@@ -27,6 +27,7 @@ models = [
     'tag-public',
     'user',
     'author',
+    'expert',
     'invite',
     'webhook',
     'integration',
