@@ -11,7 +11,7 @@ class SiteMapManager {
 
         this.pages = options.pages || this.createPagesGenerator(options);
         this.posts = options.posts || this.createPostsGenerator(options);
-        this.users = this.authors = options.authors || this.createUsersGenerator(options);
+        this.users = this.experts = this.authors = options.authors || this.createUsersGenerator(options);
         this.tags = options.tags || this.createTagsGenerator(options);
         this.index = options.index || this.createIndexGenerator(options);
 

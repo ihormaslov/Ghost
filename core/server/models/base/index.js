@@ -1280,7 +1280,6 @@ ghostBookshelf.Model = ghostBookshelf.Model.extend({
                 }
 
                 _.each(withRelated, (withRelatedKey) => {
-                    console.log(withRelated, withRelatedKey, '===================================================');
                     const relation = relations[withRelatedKey];
 
                     props[relation.name] = (() => {

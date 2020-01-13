@@ -1347,7 +1347,8 @@ describe('Integration - Web - Site', function () {
 
                         taxonomies: {
                             tag: '/tag/:slug/',
-                            author: '/author/:slug/'
+                            author: '/author/:slug/',
+                            expert: '/expert/:slug/'
                         }
                     });
 
@@ -3047,7 +3048,8 @@ describe('Integration - Web - Site', function () {
 
                         taxonomies: {
                             tag: '/tag/:slug/',
-                            author: '/author/:slug/'
+                            author: '/author/:slug/',
+                            expert: '/expert/:slug/'
                         }
                     });
 
@@ -4747,7 +4749,8 @@ describe('Integration - Web - Site', function () {
 
                         taxonomies: {
                             tag: '/tag/:slug/',
-                            author: '/author/:slug/'
+                            author: '/author/:slug/',
+                            expert: '/expert/:slug/'
                         }
                     });
 

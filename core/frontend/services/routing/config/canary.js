@@ -49,6 +49,11 @@ module.exports.TAXONOMIES = {
         filter: 'authors:\'%s\'',
         editRedirect: '#/team/:slug/',
         resource: 'authors'
+    },
+    expert: {
+        filter: 'experts:\'%s\'',
+        editRedirect: '#/team/:slug/',
+        resource: 'experts'
     }
 };
 /* eslint-enable */
