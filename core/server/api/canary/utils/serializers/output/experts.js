@@ -1,4 +1,4 @@
-const debug = require('ghost-ignition').debug('api:canary:utils:serializers:output:authors');
+const debug = require('ghost-ignition').debug('api:canary:utils:serializers:output:experts');
 const mapper = require('./utils/mapper');
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
         debug('browse');
 
         frame.response = {
-            authors: models.data.map(model => mapper.mapUser(model, frame)),
+            experts: models.data.map(model => mapper.mapUser(model, frame)),
             meta: models.meta
         };
     },
@@ -15,7 +15,7 @@ module.exports = {
         debug('read');
 
         frame.response = {
-            authors: [mapper.mapUser(model, frame)]
+            experts: [mapper.mapUser(model, frame)]
         };
     }
 };

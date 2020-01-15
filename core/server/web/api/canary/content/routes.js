@@ -24,6 +24,9 @@ module.exports = function apiRoutes() {
     router.get('/authors', mw.authenticatePublic, http(apiCanary.authorsPublic.browse));
     router.get('/authors/:id', mw.authenticatePublic, http(apiCanary.authorsPublic.read));
     router.get('/authors/slug/:slug', mw.authenticatePublic, http(apiCanary.authorsPublic.read));
+    router.get('/experts', mw.authenticatePublic, http(apiCanary.expertsPublic.browse));
+    router.get('/experts/:id', mw.authenticatePublic, http(apiCanary.expertsPublic.read));
+    router.get('/experts/slug/:slug', mw.authenticatePublic, http(apiCanary.expertsPublic.read));
 
     // ## Tags
     router.get('/tags', mw.authenticatePublic, http(apiCanary.tagsPublic.browse));

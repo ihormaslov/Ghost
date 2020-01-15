@@ -58,7 +58,6 @@ function processQuery(query, slugParam, locals) {
     });
 
     query.options.context = {member: locals.member};
-    const response = (api[query.controller] || api[query.resource])[query.type](query.options);
     return (api[query.controller] || api[query.resource])[query.type](query.options);
 }
 
