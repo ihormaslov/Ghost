@@ -39,7 +39,7 @@ function entryLookup(postUrl, routerOptions, locals) {
     }
 
     let options = {
-        include: 'authors,tags'
+        include: 'authors,experts,tags'
     };
 
     options.context = {member: locals.member};

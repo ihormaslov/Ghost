@@ -16,6 +16,12 @@ const _ = require('lodash'),
         key: 'authors',
         replacement: 'authors.slug'
     }, {
+        key: 'expert',
+        replacement: 'experts.slug'
+    }, {
+        key: 'experts',
+        replacement: 'experts.slug'
+    }, {
         key: 'primary_tag',
         replacement: 'primary_tag.slug'
     }, {

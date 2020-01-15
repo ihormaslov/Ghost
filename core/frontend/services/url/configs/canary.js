@@ -78,6 +78,7 @@ module.exports = [
                 'locale',
                 'tags',
                 'authors',
+                'experts',
                 'primary_tag',
                 'primary_author'
             ],

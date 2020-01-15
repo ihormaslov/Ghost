@@ -109,5 +109,9 @@ module.exports = {
 
     get emails() {
         return require('./emails');
+    },
+
+    get experts() {
+        return require('./experts');
     }
 };

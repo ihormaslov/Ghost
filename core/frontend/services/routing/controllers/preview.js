@@ -19,7 +19,7 @@ module.exports = function previewController(req, res, next) {
     const params = {
         uuid: req.params.uuid,
         status: 'all',
-        include: 'authors,tags'
+        include: 'authors,experts,tags'
     };
 
     return api[res.routerOptions.query.controller]

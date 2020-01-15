@@ -28,6 +28,9 @@ const RESOURCES = {
     },
     authors: {
         alias: 'authorsPublic'
+    },
+    experts: {
+        alias: 'expertsPublic'
     }
 };
 

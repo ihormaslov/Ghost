@@ -17,14 +17,16 @@ function formatPageResponse(result) {
     }
 
     _.each(result.data, function (data, name) {
-        if (data.meta) {
-            // Move pagination to be a top level key
-            response[name] = data;
-            response[name].pagination = data.meta.pagination;
-            delete response[name].meta;
-        } else {
-            // This is a single object, don't wrap it in an array
-            response[name] = data[0];
+        if (data){
+            if (data.meta) {
+                // Move pagination to be a top level key
+                response[name] = data;
+                response[name].pagination = data.meta.pagination;
+                delete response[name].meta;
+            } else {
+                // This is a single object, don't wrap it in an array
+                response[name] = data[0];
+            }
         }
     });
 

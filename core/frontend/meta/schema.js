@@ -172,6 +172,26 @@ function getAuthorSchema(metaData, data) {
     return trimSchema(schema);
 }
 
+function getExpertSchema(metaData, data) {
+    var schema = {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        sameAs: trimSameAs(data, 'expert'),
+        name: escapeExpression(data.expert.name),
+        url: metaData.expertUrl,
+        image: schemaImageObject(metaData.coverImage),
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': metaData.site.url || null
+        },
+        description: metaData.metaDescription ?
+            escapeExpression(metaData.metaDescription) :
+            null
+    };
+
+    return trimSchema(schema);
+}
+
 function getSchema(metaData, data) {
     if (!config.isPrivacyDisabled('useStructuredData')) {
         var context = data.context ? data.context : null;
@@ -183,6 +203,8 @@ function getSchema(metaData, data) {
             return getTagSchema(metaData, data);
         } else if (_.includes(context, 'author')) {
             return getAuthorSchema(metaData, data);
+        } else if (_.includes(context, 'expert')) {
+            return getExpertSchema(metaData, data);
         }
     }
     return null;

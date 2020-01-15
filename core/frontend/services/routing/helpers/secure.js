@@ -12,7 +12,9 @@
  */
 function setRequestIsSecure(req, data) {
     (Array.isArray(data) ? data : [data]).forEach(function forEach(d) {
-        d.secure = req.secure;
+        if (d) {
+            d.secure = req.secure;
+        }
     });
 }
 

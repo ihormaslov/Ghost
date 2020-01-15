@@ -10,6 +10,7 @@ let registerAllCoreHelpers;
 coreHelpers.asset = require('./asset');
 coreHelpers.author = require('./author');
 coreHelpers.authors = require('./authors');
+coreHelpers.expert = require('./expert');
 coreHelpers.experts = require('./experts');
 coreHelpers.body_class = require('./body_class');
 coreHelpers.cancel_link = require('./cancel_link');
@@ -63,6 +64,7 @@ registerAllCoreHelpers = function registerAllCoreHelpers() {
     registerThemeHelper('asset', coreHelpers.asset);
     registerThemeHelper('author', coreHelpers.author);
     registerThemeHelper('authors', coreHelpers.authors);
+    registerThemeHelper('expert', coreHelpers.expert);
     registerThemeHelper('experts', coreHelpers.experts);
     registerThemeHelper('body_class', coreHelpers.body_class);
     registerThemeHelper('cancel_link', labsEnabledMembers);

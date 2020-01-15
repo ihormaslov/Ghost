@@ -27,7 +27,7 @@ buildApiOptions = function buildApiOptions(options, post) {
             /**
              * @deprecated: `author`, will be removed in Ghost 3.0
              */
-            include: 'author,authors,tags',
+            include: 'author,authors,experts,tags',
             order: 'published_at ' + order,
             limit: 1,
             // This line deliberately uses double quotes because GQL cannot handle either double quotes

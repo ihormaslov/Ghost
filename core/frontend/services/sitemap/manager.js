@@ -47,6 +47,7 @@ class SiteMapManager {
                 pages: this.pages,
                 posts: this.posts,
                 authors: this.authors,
+                experts: this.experts,
                 tags: this.tags
             }
         });
