@@ -116,6 +116,10 @@
                     "format": "uri-reference",
                     "maxLength": 2000
                 },
+                "relevant_role": {
+                    "type": ["string", "null"],
+                    "maxLength": 2000
+                },
                 "call_date": {
                     "type": ["string", "null"],
                     "format": "date-time"
