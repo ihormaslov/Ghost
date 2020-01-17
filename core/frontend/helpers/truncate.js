@@ -26,7 +26,7 @@ module.exports = function truncate(string, options = {}) {
 
     if (runTruncate) {
         return new SafeString(
-            downsize(string, truncateOptions) + "..."
+            downsize(string, truncateOptions)
         );
     }
 
