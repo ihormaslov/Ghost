@@ -17,10 +17,13 @@ module.exports = function setupMembersApiApp() {
     // Support CORS for requests from the frontend
     const siteUrl = new URL(urlUtils.getSiteUrl());
     apiApp.use(cors(siteUrl.origin));
+    apiApp.use(express.urlencoded());
 
     // NOTE: this is wrapped in a function to ensure we always go via the getter
     apiApp.post('/send-magic-link', (req, res, next) => membersService.api.middleware.sendMagicLink(req, res, next));
     apiApp.post('/create-stripe-checkout-session', (req, res, next) => membersService.api.middleware.createCheckoutSession(req, res, next));
+    apiApp.post('/member-login/', (req, res, next) => membersService.api.middleware.handleLogin(req, res, next));
+    apiApp.post('/member-create-account/', (req, res, next) => membersService.api.middleware.handleCreateAccount(req, res, next));
     apiApp.put('/subscriptions/:id', (req, res, next) => membersService.api.middleware.updateSubscription(req, res, next));
 
     // API error handling
