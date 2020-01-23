@@ -84,6 +84,8 @@ function createApiInstance() {
                     return `📫 Confirm your subscription to ${siteTitle}`;
                 case 'signup':
                     return `🙌 Complete your sign up to ${siteTitle}!`;
+                case 'restore_password':
+                    return `🔑 Restore password`;
                 case 'signin':
                 default:
                     return `🔑 Secure sign in link for ${siteTitle}`;
@@ -128,6 +130,24 @@ function createApiInstance() {
                         Sent to ${email}
                         If you did not make this request, you can simply delete this message. You will not be signed up, and no account will be created for you.
                         `;
+                case 'restore_password':
+                    return `
+                        Hey there!
+
+                        Use following link to reset your password:
+
+                        ${url}
+
+                        For your security, the link will expire in 10 minutes time.
+
+                        See you soon!
+                        The team at ${siteTitle}
+
+                        ---
+
+                        Sent to ${email}
+                        If you did not make this request, you can simply delete this message.
+                        `;
                 case 'signin':
                 default:
                     return `
@@ -155,6 +175,8 @@ function createApiInstance() {
                 case 'subscribe':
                     return subscribeEmail({url, email, siteTitle});
                 case 'signup':
+                    return signupEmail({url, email, siteTitle});
+                case 'restore_password':
                     return signupEmail({url, email, siteTitle});
                 case 'signin':
                 default:

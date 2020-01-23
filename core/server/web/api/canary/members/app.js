@@ -24,6 +24,7 @@ module.exports = function setupMembersApiApp() {
     apiApp.post('/create-stripe-checkout-session', (req, res, next) => membersService.api.middleware.createCheckoutSession(req, res, next));
     apiApp.post('/member-login/', (req, res, next) => membersService.api.middleware.handleLogin(req, res, next));
     apiApp.post('/member-create-account/', (req, res, next) => membersService.api.middleware.handleCreateAccount(req, res, next));
+    apiApp.post('/member-restore-password/', (req, res, next) => membersService.api.middleware.handleRestorePassword(req, res, next));
     apiApp.put('/subscriptions/:id', (req, res, next) => membersService.api.middleware.updateSubscription(req, res, next));
 
     // API error handling
