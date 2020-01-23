@@ -31,6 +31,9 @@
                 "paid_status": {
                     "type": "boolean"
                 },
+                "password": {
+                    "type": "string"
+                },
                 "id": {
                     "strip": true
                 },
